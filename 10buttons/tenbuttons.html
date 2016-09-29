@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>Shyp Coding Challenge</title>
+  </head>
+  <body>
+  <h1>Shyp Coding Challenge: Ten Buttons</h1>
+  </body>
+  <script type='text/javascript'>
+    var tenButtons = function() {
+      for ( var i = 1; i <= 10; i++ ){
+        document.body.innerHTML += '<button onClick="alert(' + i + ')">' + i + '</button><br>';
+      }
+    }();
+  </script>
+</html>
