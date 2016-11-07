@@ -28,3 +28,6 @@ results
 ### NPM ###
 npm-debug.log
 node_modules
+
+### Tests ###
+problems/manifest.js
