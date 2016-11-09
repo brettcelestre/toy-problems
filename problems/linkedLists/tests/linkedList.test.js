@@ -5,6 +5,20 @@ const LinkedList = require('../prompts/linkedList.js').LinkedList,
 
 describe('LinkedLists', () => {
   describe('LinkedList', () => {
+    
+    it('should create a new list with null head and tail', () => {
+      const myList = new LinkedList();
+      assert.equal(myList.head, null, 'Head is not null');
+      assert.equal(myList.tail, null, 'Tail is not null');
+    });
+    
+    it('should add to head and tail', () => {
+      const myList = new LinkedList();
+      myList.addToTail('is how ');
+      assert.equal(myList.head.value, 'is how ', 'Head insertion not working');
+      assert.equal(myList.tail.value, 'is how ', 'Tail insertion not working');
+    });
+    
     it('should add items to head and tail', () => {
       const myList = new LinkedList();
 
