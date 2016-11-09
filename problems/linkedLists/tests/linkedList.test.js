@@ -6,20 +6,58 @@ const LinkedList = require('../prompts/linkedList.js').LinkedList,
 describe('LinkedLists', () => {
   describe('LinkedList', () => {
     
-    it('should create a new list with null head and tail', () => {
-      const myList = new LinkedList();
-      assert.equal(myList.head, null, 'Head is not null');
-      assert.equal(myList.tail, null, 'Tail is not null');
+    describe('Constructor', () => {
+      it('should create a new list with null head and tail', () => {
+        const myList = new LinkedList();
+        assert.equal(myList.head, null, 'Head is not null');
+        assert.equal(myList.tail, null, 'Tail is not null');
+      });
     });
     
-    it('should add to head and tail', () => {
-      const myList = new LinkedList();
-      myList.addToTail('is how ');
-      assert.equal(myList.head.value, 'is how ', 'Head insertion not working');
-      assert.equal(myList.tail.value, 'is how ', 'Tail insertion not working');
+    describe('addToHead', () => {
+      it('should add to head and tail when both are null', () => {
+        const myList = new LinkedList();
+        myList.addToHead('First');
+        assert.equal(myList.head.value, 'First', 'Head insertion not adding to head');
+        assert.equal(myList.tail.value, 'First', 'Head insertion not updating tail when both are null');
+      });
+      
+      it('should replace head with new head', () => {
+        const myList = new LinkedList();
+        myList.addToHead('First');
+        myList.addToHead('Second');
+        assert.equal(myList.tail.value, 'First', 'Head insertion not updating tail');
+        assert.equal(myList.head.value, 'Second', 'Head insertion not updating head');
+      });
+      
+      it('should maintain tail when multiple heads added', () => {
+        const myList = new LinkedList();
+        myList.addToHead('First');
+        myList.addToHead('Second');
+        myList.addToHead('Third');
+        assert.equal(myList.tail.value, 'First', 'Head insertion not maintaining tail');
+        assert.equal(myList.head.value, 'Third', 'Head insertion not updating head');
+      });
     });
     
-    it('should add items to head and tail', () => {
+    describe('addToTail', () => {
+      it('should add to tail and head when both are null', () => {
+        const myList = new LinkedList();
+        myList.addToTail('is how ');
+        assert.equal(myList.head.value, 'is how ', 'Head insertion not working');
+        assert.equal(myList.tail.value, 'is how ', 'Tail insertion not working');
+      });
+      
+      it('should add to tail and when head is assigned', () => {
+        const myList = new LinkedList();
+        myList.addToTail('First');
+        myList.addToTail('Second');
+        assert.equal(myList.tail.value, 'Second', 'Tail insertion not working');
+        assert.equal(myList.head.value, 'First', 'Head insertion not working');
+      });
+    });
+    
+    xit('should add items to head and tail', () => {
       const myList = new LinkedList();
 
       assert.equal(myList.head, null, 'Empty initial list');
@@ -40,7 +78,7 @@ describe('LinkedLists', () => {
       assert.equal(output, montellJordan, 'Head and Tail insertion methods not working');
     });
 
-    it('should insert items after the passed in node', () => {
+    xit('should insert items after the passed in node', () => {
       const myList = new LinkedList();
       let fourthNode = null;
       for (let i = 0; i < 10; i++) {
@@ -61,5 +99,6 @@ describe('LinkedLists', () => {
         current = current.next;
       }
     });
+    
   });
 });
