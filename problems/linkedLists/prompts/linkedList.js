@@ -9,7 +9,23 @@ class LinkedList {
 
   // Returns a boolean indicating whether the input value is present
   contains(val) {
-    
+    // Creates function findValue which takes in a node
+    const findValue = (node) => {
+      // First checks if the current value is our target val
+      if ( node.value === val ) {
+        // Returns true
+        return true;
+      // Second checks if next property is not null
+      } else if ( node.next !== null ) {
+        // If it has something, invoke findValue with the next node
+        return findValue(node.next);
+      } else {
+        // If we've cycled through the whole list, return false
+        return false;
+      }
+    }
+    // Return the result of invoking findValue with this.head ( entire linked list )
+    return findValue(this.head);
   }
 
   // Returns the numerical order or "index" of the node with value. Returns -1 if not present
