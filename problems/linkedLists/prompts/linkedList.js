@@ -30,7 +30,23 @@ class LinkedList {
 
   // Returns the numerical order or "index" of the node with value. Returns -1 if not present
   indexOf(val) {
-    
+    // Creates an function to recursively iterate over linked list, takes node and index
+    const findIndex = (node, index) => {
+      // Checks if current value is equal to target val
+      if ( node.value === val ) {
+        // Returns current index
+        return index;
+      // Makes sure the current node has a next value
+      } else if ( node.next !== null ) {
+        // Returns findIndex invoked with the next node and the incremented index
+        return findIndex(node.next, ++index);
+      } else {
+        // Return -1 if nothing was found
+        return -1
+      }
+    }
+    // Invokes findIndex with entire linked list, and index counter - 0
+    return findIndex(this.head, 0);
   }
 
   // Adds a node to head

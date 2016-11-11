@@ -95,6 +95,17 @@ describe('LinkedLists', () => {
         assert.isNotTrue(myList.contains('Nine'), 'Contains not working for items not in the list');
       });
     });
+    
+    describe('indexOf', () => {
+      it('should return the index if the value exists anywhere in the list', () => {
+        myList.addToTail('First');
+        myList.addToTail('Second');
+        myList.addToHead('Third');
+        assert.equal(myList.indexOf('Third'), 0, 'indexOf not finding item in head of list');
+        assert.equal(myList.indexOf('First'), 1, 'indexOf not finding item in body of list');
+        assert.equal(myList.indexOf('Second'), 2, 'indexOf not finding item in tail of list');
+      });
+    });
 
     xit('should insert items after the passed in node', () => {
       const myList = new LinkedList();
