@@ -1,28 +1,29 @@
 'use strict';
 
-const spiralTraversal = require('../prompts/rockPaperScissors.js');
+const solution = require('../prompts/spiralTraversal.js');
 const assert = require ('chai').assert;
+const expect = require ('chai').expect;
 
 
 describe('Spiral Traversal', ()=>{
   it('should be a function named spiralTraversal', ()=>{
-    expect(spiralTraversal).to.be.a('function');
+    expect(solution.spiralTraversal).to.be.a('function');
   });
 
   it('should return an array', ()=>{
-    expect(spiralTraversal([[1]])).to.be.a('array');
+    expect(solution.spiralTraversal([[1]])).to.be.a('array');
   });
 
   it('should flatten a 2d array', ()=>{
-    expect(spiralTraversal([[2]])).to.deep.equal([2]);
+    expect(solution.spiralTraversal([[2]])).to.deep.equal([2]);
   });
 
   it('should iterate over a 2d array in spiral order', ()=>{
-    expect(spiralTraversal([[1,2,3],[4,5,6],[7,8,9]])).to.deep.equal([1,2,3,6,9,8,7,4,5]);
+    expect(solution.spiralTraversal([[1,2,3],[4,5,6],[7,8,9]])).to.deep.equal([1,2,3,6,9,8,7,4,5]);
   });
 
   it('should return an array in spiral order', ()=>{
-    expect(spiralTraversal(
+    expect(solution.spiralTraversal(
       [
         [3,5,1,6,3],
         [3,6,8,4,2],
@@ -33,7 +34,7 @@ describe('Spiral Traversal', ()=>{
   });
 
   it('should return an array in spiral order', ()=>{
-    expect(spiralTraversal(
+    expect(solution.spiralTraversal(
       [
         [32,5,1,6,4,1,4],
         [41,3,5,3,1,5,3],
