@@ -13,25 +13,27 @@
  */
 
 const longestRun = ( string ) => {
-  console.log('string: ', string);
+  
   let longest = [], 
-      count = 0, longestCount = 0, start, stop,
+      count = 0, longestCount = 0, start = 0, stop,
       arr = string.split(''),
       last = arr[0];
-  // Iterate over array
+      
   for ( var i = 1; i <= arr.length; i++ ) {
     if ( last == arr[i] ){
       count++;
       stop = i;
       if ( count > longestCount ) {
+        longestCount = count;
         longest = [start,stop];
       }
     } else if ( last != arr[i] ) {
       start = i;
-      count = 1;
+      count = 0;
     }
     last = arr[i];
   }  
+  
   return longest;
 };
 
@@ -49,5 +51,5 @@ let randomString = function (len) {
 module.exports = { longestRun };
 
 // console.log('longestRun(): ', longestRun(randomString(50)));
-console.log('longestRun(): ', longestRun('ttooth'));
+// console.log('longestRun(): ', longestRun('hello helllo hellllo'));
 
