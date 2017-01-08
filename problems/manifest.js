@@ -5,6 +5,10 @@
  */
 
 [
+
+  // './algorithms/tests/spiralTraversal.test.js',
+  './algorithms/tests/nextLargestNumber.test.js',
+  
   // './javascript/tests/arrays.test.js',
   // './javascript/tests/math.test.js',
   // './javascript/tests/hoisting.test.js',
@@ -42,7 +46,7 @@
   // './graphs/tests/graph.test.js',
 
   // './sortAndSearch/tests/search.test.js',
-  './sortAndSearch/tests/sort.test.js',
+  // './sortAndSearch/tests/sort.test.js',
 
 ].forEach(function(test) {
 	require(test);
