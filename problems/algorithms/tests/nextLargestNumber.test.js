@@ -14,15 +14,8 @@ describe('Next Largest Number', ()=>{
     expect(solution.nextLargestNumber(1)).to.be.a('number');
   });
 
-  xit('should return an array in spiral order', ()=>{
-    expect(solution.nextLargestNumber(
-      [
-        [3,5,1,6,3],
-        [3,6,8,4,2],
-        [7,32,2,1,4],
-        [4,6,14,61,1]
-      ]
-    )).to.deep.equal([ 3, 5, 1, 6, 3, 2, 4, 1, 61, 14, 6, 4, 7, 3, 6, 8, 4, 1, 2, 32 ])
-  });
+  it('should return 123 as 132', ()=>{
+    expect(solution.nextLargestNumber(123)).to.equal(132);
+  });  
 
 });
