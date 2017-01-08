@@ -13,6 +13,10 @@ describe('Next Largest Number', ()=>{
   it('should return a number', ()=>{
     expect(solution.nextLargestNumber(1)).to.be.a('number');
   });
+  
+  it('should return 9 as 9', ()=>{
+    expect(solution.nextLargestNumber(9)).to.equal(9);
+  });
 
   it('should return 123 as 132', ()=>{
     expect(solution.nextLargestNumber(123)).to.equal(132);
