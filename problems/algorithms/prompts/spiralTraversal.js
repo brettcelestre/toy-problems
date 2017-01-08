@@ -1,14 +1,8 @@
 'use strict';
-let count = 0;
+
 const spiralTraversal = ( matrix, output = []) => {
-  count++;
-  console.log('-------');
-  console.log('count: ', count);
-  console.log('matrix: ', matrix);
-  console.log('output: ', output);
-  console.log('-------');
-  
   // SOLUTION 1
+  let newMatrix = [];
   if (matrix.length > 1){
     // Iterate through first array
     for(let val of matrix[0]){
@@ -18,45 +12,36 @@ const spiralTraversal = ( matrix, output = []) => {
     // Take off first array
     matrix.shift();
     // Rotate matrix counter clockwise
-    let newMatrix = [];
     for ( var i = matrix[0].length - 1; i >= 0; i-- ) {
-        var temp = [];
-        for ( var j = 0; j < matrix.length; j++ ) {
-          temp.push(matrix[j][i]);
-        }
-        newMatrix.push(temp); 
+      var temp = [];
+      for ( var j = 0; j < matrix.length; j++ ) {
+        temp.push(matrix[j][i]);
       }
-      
-    if ( newMatrix.length === 1 ) {
-      console.log('output ANDREW: ', output);
-      output = matrix.reduce(function(a,b){
-        return a.concat(b);
-      }, output);
-      console.log('COMPLETE ----------------------------------');
-      console.log('newMatrix: ', newMatrix);
-      console.log('output: ', output);
-      return output;
-    } else {
-      // console.log('no?: ');
-      // Call spiralTraversal on new matrix
-      spiralTraversal(newMatrix, output);
+      newMatrix.push(temp); 
     }
-    
   } 
-  // console.log('output LAST: ', output);
-  // return output;
+  // Checks if it is the last array
+  if ( newMatrix.length === 1 || matrix.length === 1 ) {
+    let finalMatrix;
+    // Checks which matrix we're dealing with, sets a final matrix
+    newMatrix.length ? finalMatrix = newMatrix : finalMatrix = matrix;
+    // Reduces remaining matrix values into output
+    output = finalMatrix.reduce(function(a,b){
+      return a.concat(b);
+    }, output);
+    return output;
+  } 
+  // Call spiralTraversal on new matrix
+  return spiralTraversal(newMatrix, output);
 };
 
-
-let matrix9 = [
-  [1,2,3],
-  [8,9,4],
-  [7,6,5]
-];
-
-let work = spiralTraversal(matrix9);
-// console.log('work: ', work);
-console.log('spiralTraversal: ', spiralTraversal(matrix9));
+// let matrix9 = [
+//   [1,2,3],
+//   [8,9,4],
+//   [7,6,5]
+// ];
+// let small = [[1]];
+// console.log('spiralTraversal: ', spiralTraversal(small));
 
 module.exports = { spiralTraversal };
 

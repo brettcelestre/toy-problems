@@ -14,15 +14,15 @@ describe('Spiral Traversal', ()=>{
     expect(solution.spiralTraversal([[1]])).to.be.a('array');
   });
 
-  xit('should flatten a 2d array', ()=>{
+  it('should flatten a 2d array', ()=>{
     expect(solution.spiralTraversal([[2]])).to.deep.equal([2]);
   });
 
-  xit('should iterate over a 2d array in spiral order', ()=>{
+  it('should iterate over a 2d array in spiral order', ()=>{
     expect(solution.spiralTraversal([[1,2,3],[4,5,6],[7,8,9]])).to.deep.equal([1,2,3,6,9,8,7,4,5]);
   });
 
-  xit('should return an array in spiral order', ()=>{
+  it('should return an array in spiral order', ()=>{
     expect(solution.spiralTraversal(
       [
         [3,5,1,6,3],
@@ -33,7 +33,7 @@ describe('Spiral Traversal', ()=>{
     )).to.deep.equal([ 3, 5, 1, 6, 3, 2, 4, 1, 61, 14, 6, 4, 7, 3, 6, 8, 4, 1, 2, 32 ])
   });
 
-  xit('should return an array in spiral order', ()=>{
+  it('should return an array in spiral order', ()=>{
     expect(solution.spiralTraversal(
       [
         [32,5,1,6,4,1,4],
