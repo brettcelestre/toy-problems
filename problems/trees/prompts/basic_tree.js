@@ -8,15 +8,16 @@
 
 class Tree {
   constructor(val) {
-    // TODO: Implement tree
+    this.value = val
+    this.children = []
   }
 
-  addChild() {
-    // TODO: Add ability to add children
+  addChild(val) {
+    this.children.push(new Tree(val));
   }
 
-  contains() {
-    // TODO: Add ability to check if value is contained within tree
+  contains(target) {
+    
   }
 };
 

@@ -9,6 +9,7 @@ describe('trees', function() {
 	  it('should add children to the tree', function() {
 	    const tree = new solution.Tree();
 	    tree.addChild(5);
+	    console.log('tree: ', tree);
 	    assert.equal(tree.children[0].value, 5);
 	  });
 
@@ -22,6 +23,7 @@ describe('trees', function() {
 	    const tree = new solution.Tree();
 	    tree.addChild(5);
 	    tree.children[0].addChild(6);
+	    console.log('tree: ', tree);
 	    assert.equal(tree.children[0].children[0].value, 6);
 	  });
 
