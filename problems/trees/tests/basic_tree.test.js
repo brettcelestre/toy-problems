@@ -95,7 +95,7 @@ describe('Trees', function() {
 		  
 	  });
 
-	  describe('countLeaves', function() {
+	  xdescribe('countLeaves', function() {
 	    
 	    it('should have a method named countLeaves', function(){
 	      expect(tree.countLeaves).to.be.a('function');
@@ -159,7 +159,7 @@ describe('Trees', function() {
 	    
 	  });
 	  
-	  xdescribe('removeFromParent', function() {
+	  describe('removeFromParent', function() {
 
 	    it('should have a method named "removeFromParent" and a property named "parent"', function() {
 	      expect(tree.addChild).to.be.a("function");

@@ -51,6 +51,14 @@ class Tree {
   }
    
   removeFromParent(target){
+    if ( this.value === target ) {
+      this.parent.children = this.parent.children.filter(val => val.value !== target);
+      return this
+    } else {
+      for(var child of this.children){
+        return child.removeFromParent(target);
+      }
+    }
   }
   
 };
