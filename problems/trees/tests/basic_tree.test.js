@@ -7,7 +7,7 @@ const solution = require('../prompts/basic_tree.js'),
 
 describe('Trees', function() {
 	
-	describe('Basic tree functions', function (){
+	xdescribe('Basic tree', function (){
 		
 		let tree;
 		
@@ -18,15 +18,7 @@ describe('Trees', function() {
 	  it('should have a property named "value"', function() {
       expect(tree.hasOwnProperty('value')).to.equal(true);
     });
-	  
-	  it('should have a method named "addChild"', function() {
-	    expect(tree.addChild).to.be.a('function');
-	  });
-		
-		it('should have a method named "contains"', function() {
-	    expect(tree.contains).to.be.a('function');
-	  });
-	  
+
 	  it('If tree is root parent should be null', function() {
 	    expect(tree.parent).to.equal(null);
 	  });
@@ -41,7 +33,11 @@ describe('Trees', function() {
 	    tree = new solution.Tree();
 	  });
 	  
-	  describe('addChild', function (){
+	  xdescribe('addChild', function (){
+	  	
+	  	it('should have a method named "addChild"', function() {
+		    expect(tree.addChild).to.be.a('function');
+		  });
 	  	
 			it('should return true when adding a children to the tree', function(){
 		    expect(tree.addChild(5)).to.equal(true);
@@ -66,7 +62,11 @@ describe('Trees', function() {
 		  
 	  });
 	  
-	  describe('contains', function (){
+	  xdescribe('contains', function (){
+	  	
+	  	it('should have a method named "contains"', function() {
+		    expect(tree.contains).to.be.a('function');
+		  });
 	  	
 		  it('should find contained values', function(){
 		    tree.addChild(5);
@@ -95,11 +95,71 @@ describe('Trees', function() {
 		  
 	  });
 
-	  xdescribe('removeFromParent', function() {
+	  describe('countLeaves', function() {
 	    
-	    it('should have a method named "traverse"', function(){
+	    it('should have a method named countLeaves', function(){
+	      expect(tree.countLeaves).to.be.a('function');
+	    });
+
+	    it('should return 1 when a tree root has 0 children', function() {
+	      expect(tree.countLeaves()).to.equal(1);
+	    });
+
+	    it('should return 2 when the root has two children', function() {
+	      var numberOfBranches;
+	      tree.addChild(new solution.Tree());
+	      tree.addChild(new solution.Tree());
+	      numberOfBranches = tree.countLeaves();
+	      expect(numberOfBranches).to.equal(2);
+	    });
+
+	    it('should still return 2 when 1 branch has 1 leaf', function() {
+	      var numberOfBranches;
+	      tree.addChild(new solution.Tree());
+	      var branch = new solution.Tree();
+	      tree.addChild(branch);
+	      branch.addChild(new solution.Tree());
+	      numberOfBranches = tree.countLeaves();
+	      expect(numberOfBranches).to.equal(2);
+	    });
+	    
+	    it('should return 4 when 2 branches have 2 children each', function() {
+	      tree.addChild(3);
+	      tree.addChild(1);
+	      tree.children[0].addChild(7);
+	      tree.children[0].addChild(9);
+	      tree.children[1].addChild(4);
+	      tree.children[1].addChild(6);
+	      let numberOfBranches = tree.countLeaves();
+	      expect(numberOfBranches).to.equal(4);
+	    });
+
+	  });
+	  
+	  xdescribe('traverse', function() {
+	  	
+	  	it('should have a method named "traverse"', function(){
 	      expect(tree.traverse).to.be.a('function');
 	    });
+	    
+	    it('It should accept a callback and execute it on every value contained in the tree', function() {
+	      tree.addChild(3);
+	      tree.addChild(1);
+	      tree.children[0].addChild(7);
+	      tree.children[0].addChild(9);
+	      let results = [];
+	      let print = item => results.push(item);
+	      tree.traverse(print);
+	      expect(results.length).to.equal(5);
+	      expect(results[1]).to.equal(3);
+	      expect(results[2]).to.equal(7);
+	      expect(results[3]).to.equal(9);
+	      expect(results[4]).to.equal(1);
+	    });
+	    
+	  });
+	  
+	  xdescribe('removeFromParent', function() {
 
 	    it('should have a method named "removeFromParent" and a property named "parent"', function() {
 	      expect(tree.addChild).to.be.a("function");
@@ -111,65 +171,13 @@ describe('Trees', function() {
 	      tree.addChild(14);
 	      tree.children[0].addChild(7);
 	      tree.children[0].addChild(8);
-	      var branchedTree = tree.removeFromParent(7);
+	      let branchedTree = tree.removeFromParent(7);
 	      expect(tree.contains(7)).to.equal(false);
 	      expect(branchedTree.value).to.equal(7);
 	      expect(tree.children.length).to.equal(2);
 	      expect(tree.children[0].children.length).to.equal(1);
 	    });
 	    
-	  });
-
-	  xdescribe('traverse', function() {
-	    
-	    it('It should accept a callback and execute it on every value contained in the tree', function() {
-	      tree.addChild(3);
-	      tree.addChild(1);
-	      tree.children[0].addChild(7);
-	      tree.children[0].addChild(9);
-	      var results = [];
-	      var print = item => results.push(item);
-	      tree.traverse(print);
-	      expect(results.length).to.equal(5);
-	      expect(results[1]).to.equal(3);
-	      expect(results[2]).to.equal(7);
-	      expect(results[3]).to.equal(9);
-	      expect(results[4]).to.equal(1);
-	    });
-	    
-	  });
-
-	  xdescribe('countLeaves', function() {
-	    
-	    it('should have a method named countLeaves', function(){
-	      expect(tree.countLeaves).to.be.a('function');
-	    });
-
-	    it('should return 1 when a tree root has 0 children', function() {
-	      var root = Tree();
-	      expect(root.countLeaves()).to.equal(1);
-	    });
-
-	    it('should return 2 when the root has two children', function() {
-	      var root = Tree();
-	      var numberOfBranches;
-	      root.addChild(Tree());
-	      root.addChild(Tree());
-	      numberOfBranches = root.countLeaves();
-	      expect(numberOfBranches).to.equal(2);
-	    });
-
-	    it('should still return 2 when 1 branch has 1 leaf', function() {
-	      var root = Tree();
-	      var numberOfBranches;
-	      root.addChild(Tree());
-	      var branch = Tree();
-	      root.addChild(branch);
-	      branch.addChild(Tree());
-	      numberOfBranches = root.countLeaves();
-	      expect(numberOfBranches).to.equal(2);
-	    });
-
 	  });
 
 	  xdescribe('depthFirstSearch', function() {

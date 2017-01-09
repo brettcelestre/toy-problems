@@ -14,15 +14,45 @@ class Tree {
   }
 
   addChild(val) {
-    this.children.push(new Tree(val));
-    return true;
+    let child = new Tree(val)
+    child.parent = this
+    this.children.push(child)
+    return true
   }
 
   contains(target) {
     return (this.value === target) ? true :
     this.children.some(child => child.contains(target))
   }
+  
+  countLeaves(){
+    // Solution 1
+    return this.children.length === 0 ? 1
+    : this.children.reduce((total, child) => total + child.countLeaves(), 0);
+    
+    // Solution 2
+    // let count = 0;
+    // const subroutine = (node) => {
+    //   if ( node.children.length === 0 ){
+    //     return count++
+    //   } else {
+    //     for (var i =0; i<node.children.length;i++){
+    //       subroutine(node.children[i]);
+    //     }
+    //   }
+    // }
+    // subroutine(this)
+    // return count;
+  }
+  
+  traverse(cb){
+    cb(this.value)
+    this.children.forEach(val => val.traverse(cb))
+  }
    
+  removeFromParent(target){
+  }
+  
 };
 
 module.exports = { Tree };
