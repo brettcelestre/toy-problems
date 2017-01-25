@@ -19,13 +19,11 @@ const nextLargestNumber = ( num ) => {
           let copyLeft = n;
           // Sort numbers right of the left swapped number
           return parseInt(copyLeft.splice(0,j+1).concat(n.sort()).join(''));
-        }  
+        }
       }
-      
+
     }
   }
 };
-
-console.log('n: ', nextLargestNumber(12543));
 
 module.exports = { nextLargestNumber };

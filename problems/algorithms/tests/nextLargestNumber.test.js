@@ -24,6 +24,10 @@ describe('Next Largest Number', ()=>{
   
   it('should return 12543 as 13245', ()=>{
     expect(solution.nextLargestNumber(12543)).to.equal(13245);
+  }); 
+  
+  it('should return 981762 as 982167', ()=>{
+    expect(solution.nextLargestNumber(981762)).to.equal(982167);
   });  
 
 });
