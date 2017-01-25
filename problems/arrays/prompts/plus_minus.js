@@ -42,7 +42,7 @@ const plusMinus = (size, arr) => {
     let positiveFraction = positive / size,
         negativeFraction = negative / size,
         zeroFraction = zero / size;
-    return [positiveFraction.toFixed(7),negativeFraction.toFixed(7), zeroFraction.toFixed(7)];
+    return [Number(positiveFraction.toFixed(7)),Number(negativeFraction.toFixed(7)), Number(zeroFraction.toFixed(7))];
   } else {
     return 'Invalid input.'
   }
