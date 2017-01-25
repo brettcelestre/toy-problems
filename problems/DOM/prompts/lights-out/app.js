@@ -20,8 +20,8 @@ $(document).ready(function(){
       // Creates board piece with class=square, id= rowNum.toString() += indexNumber.toString()
       var r = rowNumber.toString(),
           i = indexNumber.toString(),
-          squareID = r + i; 
-      $('#' + rowNumber).append('<div class="square" id="' + squareID + '">' + squareID + '</div>');  
+          squareID = r + i;
+      $('#' + rowNumber).append('<div class="square" id="' + squareID + '">' + squareID + '</div>');
     });
   });
   // Creates a toggle function. Toggle map data from 0>1 or 1>0
@@ -62,7 +62,5 @@ $(document).ready(function(){
     // Bottom
     toggleSquares((thisRow + 1), thisIndex);
   });
-  
+
 });
-
-
