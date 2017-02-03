@@ -15,7 +15,6 @@
 
 class Stack {
   constructor() {
-    // TODO: Implement constructor
     this.collection = [];
   }
 
