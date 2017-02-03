@@ -9,6 +9,10 @@ describe('Strings', () => {
     it('should be a string',  () => {
       assert.equal(typeof solution.snakeCaseConverter('test'), 'string');
     });
+    
+    it('should return Error message if not a string',  () => {
+      assert.equal(solution.snakeCaseConverter(123), 'Input must be a string');
+    });
 
   });
 });
