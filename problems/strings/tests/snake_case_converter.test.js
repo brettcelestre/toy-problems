@@ -13,6 +13,14 @@ describe('Strings', () => {
     it('should return Error message if not a string',  () => {
       assert.equal(solution.snakeCaseConverter(123), 'Input must be a string');
     });
+    
+    it('should test as test',  () => {
+      assert.equal(solution.snakeCaseConverter('test'), 'test');
+    });
+    
+    it('should snakeCaseConverter as snake_case_converter',  () => {
+      assert.equal(solution.snakeCaseConverter('snakeCaseConverter'), 'snake_case_converter');
+    });
 
   });
 });
