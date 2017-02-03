@@ -26,7 +26,7 @@ class Stack {
 
   // Pop will remove an element from the stack and return that element
   pop() {
-    // TODO: Implement pop method
+    return this.collection.pop();
   }
 
   // Size returns the size of the stack
