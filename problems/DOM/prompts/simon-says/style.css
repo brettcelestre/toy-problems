@@ -1,0 +1,47 @@
+body { background-color: lightgrey; }
+
+.container {
+  display: inline-flex;
+}
+
+.indicator {
+  width: 200px;
+  height: 200px;
+  border: 1px;
+  background-color: white;
+}
+
+ul.buttons {
+  width: 210px;
+  height: 202px;
+  padding: 0;
+  margin: 0;
+}
+
+li {
+  display: inline-block;
+  list-style: none;
+  box-sizing: border-box;
+}
+
+button {
+  width: 100px;
+  height: 100px;
+  border: 1px;
+}
+  
+.red {
+  background-color: red;
+}
+
+.green {
+ background-color: green;
+}
+
+.blue {
+  background-color: blue;
+}
+
+.yellow {
+  background-color: yellow;
+}
