@@ -1,6 +1,8 @@
 document.addEventListener('DOMContentLoaded', function() {
   
-  let $li = document.getElementsByTagName('li');
+  let $li = document.getElementsByTagName('li'),
+      $reset = document.getElementById('reset'),
+      $indicator = document.getElementsByClassName('indicator');
   
   for ( let i = 0; i < $li.length; i++ ){
     $li[i].addEventListener('click', function(e){
@@ -10,8 +12,23 @@ document.addEventListener('DOMContentLoaded', function() {
     }); 
   }
   
+  $reset.addEventListener('click', function(e){
+    console.log('Reset Clicked');
+    // Invokes simonStartColors with shuffled order
+    simonStartColors(shuffleArray(['red', 'yellow', 'blue', 'green']));
+  });
   
-  console.log('colors: ', shuffleArray(['red', 'yellow', 'blue', 'green']));
+  // simonStartColors creates a new round of Simon Says
+  const simonStartColors = (colors) => {
+    console.log('simonStartColors colors: ', colors);
+    let time = 500;
+    colors.forEach(function(val){
+      setTimeout(function(){ 
+        console.log('val: ', val);
+      }, time);
+      time += 500;
+    });
+  };
   
 });
 

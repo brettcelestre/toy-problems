@@ -29,6 +29,10 @@ button {
   height: 100px;
   border: 1px;
 }
+
+button:hover {
+  cursor: pointer;
+}
   
 .red {
   background-color: red;
