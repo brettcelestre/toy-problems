@@ -2,13 +2,17 @@ document.addEventListener('DOMContentLoaded', function() {
   
   let $li = document.getElementsByTagName('li'),
       $reset = document.getElementById('reset'),
-      $indicator = document.getElementsByClassName('indicator');
+      $indicator = document.getElementsByClassName('indicator'),
+      simonsPattern = [],
+      userPattern = [];
   
   for ( let i = 0; i < $li.length; i++ ){
     $li[i].addEventListener('click', function(e){
       let $indicator = document.getElementsByClassName('indicator');
+      // Adds guess to userPattern
+      userPattern.push(e.target.className);
       console.log('testing: ', e.target.className);
-      console.log('id: ', $indicator[0]);
+      // console.log('id: ', $indicator[0]);
     }); 
   }
   
@@ -21,14 +25,27 @@ document.addEventListener('DOMContentLoaded', function() {
   // simonStartColors creates a new round of Simon Says
   const simonStartColors = (colors) => {
     console.log('simonStartColors colors: ', colors);
-    let time = 500;
+    
+    let time = 500,
+        simonsPattern = colors;
+    
+    // Shows pattern on indicator
     colors.forEach(function(val){
       setTimeout(function(){ 
-        console.log('val: ', val);
+        $indicator[0].className = 'indicator ' + val;
       }, time);
       time += 500;
     });
+    
+    // Sets indicator back to white after pattern shows
+    setTimeout(function(){
+      $indicator[0].className = 'indicator';
+    }, 2500);
+    
   };
+  
+  // Starts Game
+  simonStartColors(shuffleArray(['red', 'yellow', 'blue', 'green']));
   
 });
 
@@ -48,5 +65,6 @@ const simonVerifier = (simonsOrder, usersOrder) => {
   // Show win state
   // Ask to play again
 };
+
 
 module.exports = { simonSays };
