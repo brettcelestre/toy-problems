@@ -11,9 +11,28 @@ document.addEventListener('DOMContentLoaded', function() {
       let $indicator = document.getElementsByClassName('indicator');
       // Adds guess to userPattern
       userPattern.push(e.target.className);
+      // Checks to see if pattern is correct
+      userPatternCheck();
       console.log('testing: ', e.target.className);
-      // console.log('id: ', $indicator[0]);
+      console.log('id: ', $indicator[0]);
+      console.log('userPattern: ', userPattern);
     }); 
+  }
+  
+  // Checks to see if users pattern was correct
+  const userPatternCheck = () => {
+    let flag = true;
+    if ( userPattern.length ===  4 ) {
+      for ( var i = 0; i<4; i++ ) {
+        if ( userPattern[i] !== simonsPattern[i] ){
+          flag = false;
+          break;
+        }
+      }
+      if ( flag ) {
+        console.log('YOU WON');
+      }
+    }
   }
   
   $reset.addEventListener('click', function(e){
@@ -26,8 +45,9 @@ document.addEventListener('DOMContentLoaded', function() {
   const simonStartColors = (colors) => {
     console.log('simonStartColors colors: ', colors);
     
-    let time = 500,
-        simonsPattern = colors;
+    let time = 500;
+    // Updates global simonsPattern array
+    simonsPattern = colors;
     
     // Shows pattern on indicator
     colors.forEach(function(val){
