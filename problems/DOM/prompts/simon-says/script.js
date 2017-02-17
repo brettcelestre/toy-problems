@@ -3,19 +3,19 @@ document.addEventListener('DOMContentLoaded', function() {
   let $li = document.getElementsByTagName('li'),
       $reset = document.getElementById('reset'),
       $indicator = document.getElementsByClassName('indicator'),
+      $defeat = document.getElementsByClassName('defeat'),
+      $victory = document.getElementsByClassName('victory'),
       simonsPattern = [],
       userPattern = [];
   
   for ( let i = 0; i < $li.length; i++ ){
     $li[i].addEventListener('click', function(e){
-      let $indicator = document.getElementsByClassName('indicator');
+      // Shows selected color on indicator
+      $indicator[0].className = 'indicator ' + e.target.className;
       // Adds guess to userPattern
       userPattern.push(e.target.className);
       // Checks to see if pattern is correct
       userPatternCheck();
-      console.log('testing: ', e.target.className);
-      console.log('id: ', $indicator[0]);
-      console.log('userPattern: ', userPattern);
     }); 
   }
   
@@ -26,17 +26,17 @@ document.addEventListener('DOMContentLoaded', function() {
       for ( var i = 0; i<4; i++ ) {
         if ( userPattern[i] !== simonsPattern[i] ){
           flag = false;
+          $defeat[0].style.visibility = 'visible';
           break;
         }
       }
       if ( flag ) {
-        console.log('YOU WON');
+        $victory[0].style.visibility = 'visible';
       }
     }
   }
   
   $reset.addEventListener('click', function(e){
-    console.log('Reset Clicked');
     // Invokes simonStartColors with shuffled order
     simonStartColors(shuffleArray(['red', 'yellow', 'blue', 'green']));
   });
@@ -44,6 +44,11 @@ document.addEventListener('DOMContentLoaded', function() {
   // simonStartColors creates a new round of Simon Says
   const simonStartColors = (colors) => {
     console.log('simonStartColors colors: ', colors);
+    
+    // Resets collections and elements
+    $defeat[0].style.visibility = 'hidden';
+    $victory[0].style.visibility = 'hidden';
+    userPattern = [];
     
     let time = 500;
     // Updates global simonsPattern array
@@ -69,7 +74,6 @@ document.addEventListener('DOMContentLoaded', function() {
   
 });
 
-
 const shuffleArray = (array) => {
   for (var i = array.length - 1; i > 0; i--) {
     var j = Math.floor(Math.random() * (i + 1));
@@ -80,11 +84,4 @@ const shuffleArray = (array) => {
   return array;
 };
 
-const simonVerifier = (simonsOrder, usersOrder) => {
-  // check if they are the same
-  // Show win state
-  // Ask to play again
-};
-
-
-module.exports = { simonSays };
+// module.exports = { simonSays };

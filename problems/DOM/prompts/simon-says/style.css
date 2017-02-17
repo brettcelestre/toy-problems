@@ -11,6 +11,14 @@ body { background-color: lightgrey; }
   background-color: white;
 }
 
+.victory {
+  visibility: hidden;
+}
+
+.defeat {
+  visibility: hidden;
+}
+
 ul.buttons {
   width: 210px;
   height: 202px;
