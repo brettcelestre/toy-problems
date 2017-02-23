@@ -15,14 +15,8 @@ const stringGenerator = () => {
       sentence += alphabet[letter]
     }
   }
-  // console.log('words: ', words);
-  // console.log('sentence: ', sentence);
-  // console.log('length: ', range);
-  // console.log('longest word: ', sentence.split(' ').sort((a,b)=> b.length - a.length)[0]);
-  
+
   return sentence.split(' ').sort((a,b)=> b.length - a.length)[0];
 };
-
-stringGenerator();
 
 module.exports = { stringGenerator };
