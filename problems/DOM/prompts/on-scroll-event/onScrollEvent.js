@@ -10,15 +10,15 @@ for (var i = 0; i < 200; i++ ){
 var flag = false;
 
 function testScroll(ev){
-  if( window.pageYOffset>55 && !flag) {
+  if( window.pageYOffset >= 54 && !flag) {
     flag = true;
-    var $nav = document.getElementsByClassName('nav');
-    $nav[0].style.position = 'fixed'
+    var $stickie = document.getElementsByClassName('stickie');
+    $stickie[0].style.visibility = 'visible';
   }
-  if( window.pageYOffset<55 && flag) {
+  if( window.pageYOffset <= 55 && flag) {
     flag = false;
-    var $nav = document.getElementsByClassName('nav');
-    $nav[0].style.position = 'initial';
+    var $stickie = document.getElementsByClassName('stickie');
+    $stickie[0].style.visibility = 'hidden';
   }
 }
 window.onscroll=testScroll
