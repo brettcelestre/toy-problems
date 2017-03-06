@@ -12,11 +12,13 @@ var flag = false;
 function testScroll(ev){
   if( window.pageYOffset>55 && !flag) {
     flag = true;
-    console.log('User has scrolled at least 55 px!');
+    var $nav = document.getElementsByClassName('nav');
+    $nav[0].style.position = 'fixed'
   }
   if( window.pageYOffset<55 && flag) {
     flag = false;
-    console.log('User has scrolled above 55 px!');
+    var $nav = document.getElementsByClassName('nav');
+    $nav[0].style.position = 'initial';
   }
 }
 window.onscroll=testScroll
