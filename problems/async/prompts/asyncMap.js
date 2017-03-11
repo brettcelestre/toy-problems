@@ -40,7 +40,34 @@
 
 
 const asyncMap = (tasks, callback) => {
-
+  let results = [],
+      finished = tasks.length;
+    
+  tasks.forEach(function(task, i) {
+    task(function(result) {
+      results[i] = result;
+      if (--finished === 0) callback(results);
+    });
+  });
+  return results;
 };
+
+let test = asyncMap([
+    cb => {
+      setTimeout(() => {
+        cb('one')
+      }, 200)
+    },
+    cb => {
+      setTimeout(() => {
+        cb('two')
+      }, 100)
+    }
+  ],
+  result => {
+    // console.log(result);
+    return result;
+  }
+);
 
 module.exports = { asyncMap };
