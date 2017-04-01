@@ -31,3 +31,7 @@ node_modules
 
 ### Tests ###
 problems/manifest.js
+
+### Images ###
+*/*/*/*/*.jpg
+*.jpg
