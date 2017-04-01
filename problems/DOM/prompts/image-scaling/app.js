@@ -1,4 +1,5 @@
 
+// Test Data
 var data = [
   {
     'title': 'Grant',
@@ -25,6 +26,7 @@ var data = [
 
 var $viewer = document.getElementsByClassName('viewer'),
     $size = document.getElementsByClassName('size'),
+    currentSize = '';
     $next = document.getElementById('next'),
     $back = document.getElementById('back'),
     current = 0;
@@ -33,44 +35,42 @@ $next.onclick = function next(){
   if ( current <= data.length ){
     current++;
     console.log(current);
+    $viewer[0]['innerHTML'] = '<img src="' + data[current]['sizes'][currentSize]['src'] + '" width="' + data[current]['sizes'][currentSize]['width'] + '" height="' + data[current]['sizes'][currentSize]['height'] + '"/>';
   }
 }
 $back.onclick = function back(){
   if ( current > 0 ){
     current--;
     console.log(current);
+    $viewer[0]['innerHTML'] = '<img src="' + data[current]['sizes'][currentSize]['src'] + '" width="' + data[current]['sizes'][currentSize]['width'] + '" height="' + data[current]['sizes'][currentSize]['height'] + '"/>';
   }
 }
 
-// fn = find window width x height
-window.onresize = function updateImageSize(){
+// Checks window width & height and updates correct image resolution
+function updateImageSize(){
 
-  var currentImageSize, width, height;
-  // window.self.innerWidth / innerHeight
-  console.log(window.self.innerWidth);
-  // Large
-  // if ( 1500 < window.self.innerWidth ) {
-  // // Medium
-  //   size[0].innerHTML = '<h5>Large</h5>';
-
+  // TODO: Also height
   if ( window.self.innerWidth >= 1100 ) {
-    // size[0].innerHTML = '<h5>' + window.self.innerWidth + ' x ' + window.outerHeight + '</h5>';
+    currentSize = 'large';
     $size[0].innerHTML = '<h5>Large</h5>'
-  // Small
-  // if ( 1099 >= window.self.innerWidth >= 800 ) {
+    // Updates Image
+    $viewer[0]['innerHTML'] = '<img src="' + data[current]['sizes'][currentSize]['src'] + '" width="' + data[current]['sizes'][currentSize]['width'] + '" height="' + data[current]['sizes'][currentSize]['height'] + '"/>';
+
+  // TODO: Also height
   } else if ( 1099 >= window.self.innerWidth && 800 <= window.self.innerWidth) {
-    // size[0].innerHTML = '<h5>' + window.self.innerWidth + ' x ' + window.outerHeight + '</h5>';
+    currentSize = 'medium';
     $size[0].innerHTML = '<h5>Medium</h5>';
-  // Small
+    // Updates Image
+    $viewer[0]['innerHTML'] = '<img src="' + data[current]['sizes'][currentSize]['src'] + '" width="' + data[current]['sizes'][currentSize]['width'] + '" height="' + data[current]['sizes'][currentSize]['height'] + '"/>';
+
+  // TODO: Also height
   } else if ( 799 >= window.self.innerWidth ) {
-    // size[0].innerHTML = '<h5>' + window.self.innerWidth + ' x ' + window.outerHeight + '</h5>';
+    currentSize = 'small';
     $size[0].innerHTML = '<h5>Small</h5>';
-    $viewer[0]['innerHTML'] = '<img src="' + current + '" width="' + current + '" height="50px"/>';
+    // Updates Image
+    $viewer[0]['innerHTML'] = '<img src="' + data[current]['sizes'][currentSize]['src'] + '" width="' + data[current]['sizes'][currentSize]['width'] + '" height="' + data[current]['sizes'][currentSize]['height'] + '"/>';
   }
 }
-console.log(window);
-
-// on window resize - invoke window size check
-// window.onresize=updateImageSize;
-
-// viewer[0]['innerHTML'] = '<img src="' + current + '" width="' + current + '" height="50px"/>';
+// Initalize first image
+updateImageSize();
+window.onresize = updateImageSize;
