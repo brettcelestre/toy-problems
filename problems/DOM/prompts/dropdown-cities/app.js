@@ -38,7 +38,7 @@ dropdownList = () => {
 
     // Builds dropdown with list data
     list.forEach(city => {
-      let item = '<div onclick="setCity(this)">' + city + '</div>';
+      let item = '<div onclick="setCity(this)" style="cursor:pointer;">' + city + '</div>';
       $dropdown.innerHTML += item;
     });
   }
@@ -47,4 +47,5 @@ dropdownList = () => {
 // Sets city inside of input
 setCity = (city) => {
   $input.value = city.innerHTML;
+  $dropdown.innerHTML = '';
 }
