@@ -35,7 +35,11 @@ const buildProductCards = data => {
     $title = document.createElement('DIV'),
     $description = document.createElement('DIV'),
     $list = document.createElement('UL'),
-    $learnMore = document.createElement('DIV');
+    $learnMore = document.createElement('DIV'),
+    $tooltip = document.createElement('IMG');
+    $tooltip.src = 'https://cdn1.iconfinder.com/data/icons/education-set-4/512/information-128.png',
+    $tooltip.width = '11',
+    $tooltip.height ='11';
 
     // Adds styles
     $productCard.className += ' product-card';
@@ -43,11 +47,16 @@ const buildProductCards = data => {
     $description.className += ' description';
     $list.className += ' list';
     $learnMore.className += ' learn-more';
+    $tooltip.className += ' tooltip';
 
     // Adds product data to elements
     $title.appendChild(document.createTextNode(val.name));
-    $description.appendChild(document.createTextNode(val.description));
     $learnMore.appendChild(document.createTextNode('Learn More'));
+    // Checks description length
+    $description.appendChild(document.createTextNode(val.description));
+    // Adds tooltip icon
+    $description.appendChild($tooltip);
+
 
     // Builds list
     val.bullets.forEach(item => {
