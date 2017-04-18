@@ -9,7 +9,8 @@ const cities = ['Boston', 'Berlin', 'Los Angeles', 'San Francisco', 'Santa Clara
 const cities = ['Boston', 'Berlin', 'Pleasant Hill', 'Los Angeles', 'San Francisco', 'Santa Clara', 'Paris', 'Washington', 'Concord', 'Walnut Creek', 'San Jose', 'Palo Alto', 'Compton'];
 
 // Dropdown Element
-let $dropdown = document.getElementById('dropdown-list');
+let $dropdown = document.getElementById('dropdown-list'),
+    $input = document.getElementById('cities-list');
 
 dropdownList = () => {
   // Search Value
@@ -37,27 +38,13 @@ dropdownList = () => {
 
     // Builds dropdown with list data
     list.forEach(city => {
-      // let node = document.createElement("div"),
-      // textnode = document.createTextNode(city);
-      // node.appendChild(textnode);
-      // $dropdown.appendChild(node);
-
-      // let item = `<div onClick="setCity(${city})"> ${city} </div>`;
-      let item = '<div onClick="setCity("' + city + '")">' + city + '</div>';
-      // let item = '<div onClick="setCity()">' + city + '</div>';
-
+      let item = '<div onclick="setCity(this)">' + city + '</div>';
       $dropdown.innerHTML += item;
     });
   }
 }
 
-setCity = city => {
-  console.log('setCity ran', city);
+// Sets city inside of input
+setCity = (city) => {
+  $input.value = city.innerHTML;
 }
-
-/*
-var node = document.createElement("div");                 // Create a <li> node
-var textnode = document.createTextNode("Water");         // Create a text node
-node.appendChild(textnode);                              // Append the text to <li>
-document.getElementById("myList").appendChild(node);     // Append <li> to <ul> with id="myList"
-*/
