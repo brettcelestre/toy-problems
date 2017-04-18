@@ -6,7 +6,6 @@ On click of a city, it should replace the input box text and hide the dropdown.
 const cities = ['Boston', 'Berlin', 'Los Angeles', 'San Francisco', 'Santa Clara'];
 */
 
-// const cities = ['Boston', 'Berlin', 'Pleasant Hill', 'Los Angeles', 'San Francisco', 'Santa Clara', 'Paris', 'Washington', 'Concord', 'Walnut Creek', 'San Jose', 'Palo Alto', 'Compton'];
 let cities = [];
 
 // Dropdown Element
