@@ -2,7 +2,7 @@
 const productData = [
   {
     'name': 'Honda',
-    'description': 'Honda Motor Co., Ltd. is a Japanese public multinational conglomerate corporation primarily known as a manufacturer of automobiles, aircraft, motorcycles, and power equipment',
+    'description': 'Honda Motor Co., Ltd. is a Japanese public multinational conglomerate corporation primarily known as a manufacturer of automobiles, aircraft, motorcycles, and power equipment.',
     'bullets': ['Civic', 'Accord', 'CRV'],
     'tooltip': 'Lasts a really long time',
     'learnMore': 'http://www.honda.com'
@@ -18,7 +18,7 @@ const productData = [
     'name': 'TELSA',
     'description': 'Tesla, Inc. is a major American automaker, energy storage company, and solar panel manufacturer based in Palo Alto, California.',
     'bullets': ['S', 'Roadster', '3', 'X'],
-    'tooltip': 'No more gas',
+    'tooltip': 'Expensive + no more gas',
     'learnMore': 'http://www.tesla.com'
   }
 ];
@@ -32,14 +32,22 @@ const buildProductCards = data => {
   data.forEach((val, i) => {
     // Creates card elements
     let $productCard = document.createElement('DIV'),
-    $title = document.createElement('DIV'),
-    $description = document.createElement('DIV'),
-    $list = document.createElement('UL'),
-    $learnMore = document.createElement('DIV'),
-    $tooltip = document.createElement('IMG');
-    $tooltip.src = 'https://cdn1.iconfinder.com/data/icons/education-set-4/512/information-128.png',
-    $tooltip.width = '11',
-    $tooltip.height ='11';
+        $title = document.createElement('DIV'),
+        $description = document.createElement('DIV'),
+        $list = document.createElement('UL'),
+        $learnMore = document.createElement('DIV'),
+        $tooltipImg = document.createElement('IMG');
+        $tooltipImg.src = 'https://cdn1.iconfinder.com/data/icons/education-set-4/512/information-128.png',
+        $tooltipImg.width = '11',
+        $tooltipImg.height ='11',
+        $tooltipImg.id = 'tooltip' + i,
+        $tooltipDiv = document.createElement('DIV'),
+        $tooltipDiv.id = 'tooltipDiv' + i,
+        $tooltipArrow = document.createElement('IMG'),
+        $tooltipArrow.src = 'https://image.flaticon.com/icons/svg/25/25330.svg',
+        $tooltipArrow.width = 19,
+        $tooltipArrow.height = 13,
+        $tooltipArrow.id = 'tooltip-arrow' + i;
 
     // Adds styles
     $productCard.className += ' product-card';
@@ -47,16 +55,20 @@ const buildProductCards = data => {
     $description.className += ' description';
     $list.className += ' list';
     $learnMore.className += ' learn-more';
-    $tooltip.className += ' tooltip';
+    $tooltipImg.className += ' tooltip-img';
+    $tooltipDiv.className += ' tooltip-div';
+    $tooltipArrow.className += ' tooltip-arrow';
 
     // Adds product data to elements
     $title.appendChild(document.createTextNode(val.name));
     $learnMore.appendChild(document.createTextNode('Learn More'));
+    $tooltipDiv.appendChild(document.createTextNode(val.tooltip));
     // Checks description length
     $description.appendChild(document.createTextNode(val.description));
-    // Adds tooltip icon
-    $description.appendChild($tooltip);
-
+    // Adds tooltipImg icon
+    $description.appendChild($tooltipImg);
+    $description.appendChild($tooltipDiv);
+    $description.appendChild($tooltipArrow);
 
     // Builds list
     val.bullets.forEach(item => {
@@ -65,20 +77,47 @@ const buildProductCards = data => {
       $list.appendChild($li);
     });
 
+    // Places elements in product card
     $productCard.appendChild($title);
     $productCard.appendChild($description);
     $productCard.appendChild($list);
     $productCard.appendChild($learnMore);
 
+    // Adds product card to product container
     $productContainer[0].appendChild($productCard);
+
+    const sub = () => {
+      let $tooltipEvent = document.getElementById('tooltip' + i),
+          $tooltipDivEvent = document.getElementById('tooltipDiv' + i),
+          $tooltipImgLocation = document.getElementsByClassName('tooltip-img'),
+          $tooltipArrowEvent = document.getElementById('tooltip-arrow' + i),
+          $tooltipArrows = document.getElementsByClassName('tooltip-arrow');
+
+      // Adds Arrows to above tooltips and below 'i' icon
+      $tooltipArrows[i].style.zIndex = 99 + i;
+      $tooltipArrows[i].style.top = ($tooltipImgLocation[i].offsetTop + 10) + 'px';
+      $tooltipArrows[i].style.left = $tooltipImgLocation[i].offsetLeft + 'px';
+
+      // Adds tooltip functionality
+      $tooltipEvent.addEventListener("mouseover", function(){
+        $tooltipDivEvent.style.display = 'block';
+        $tooltipArrowEvent.style.display = 'block';
+      });
+      $tooltipEvent.addEventListener("mouseout", function(){
+        setTimeout(()=>{
+          $tooltipDivEvent.style.display = 'none';
+          $tooltipArrowEvent.style.display = 'none';
+        }, 750);
+      });
+    }
+    sub();
+
   });
-
-
-  // console.log($productContainer);
 
 }
 
 buildProductCards(productData);
+
 
 /* <div class='product-card'>
   <div class='title'></div>
