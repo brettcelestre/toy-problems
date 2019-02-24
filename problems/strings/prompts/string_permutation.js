@@ -11,7 +11,6 @@
   */
 
 const stringPermutation = function(string1, string2) {
-  return string1.split('').sort().join('') === string2.split('').sort().join('');
 };
 
 module.exports = { stringPermutation };

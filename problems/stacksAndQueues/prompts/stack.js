@@ -20,17 +20,14 @@ class Stack {
 
   // Push will add an element to the stack
   push(val) {
-    this.collection.push(val)
   }
 
   // Pop will remove an element from the stack and return that element
   pop() {
-    return this.collection.pop();
   }
 
   // Size returns the size of the stack
   size() {
-    return this.collection.length;
   }
 }
 

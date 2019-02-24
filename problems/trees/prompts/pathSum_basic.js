@@ -18,33 +18,6 @@
 
 const pathSum = (tree, target, runningTotal = 0) => {
   
-  // Updates runningTotal
-  runningTotal += tree.value;
-
-  // base cases
-  if ( runningTotal > target ) {
-    return false;
-  } else if ( tree.left === null && tree.right === null ) {
-    return runningTotal === target ? true : false;
-  }
-  
-  // left side
-  if ( tree.left ) {
-    // console.log('tree.left ran');
-    if ( pathSum(tree.left, target, runningTotal) ) {
-      return true;
-    }
-  }
-  
-  // right side
-  if ( tree.right ) {
-    // console.log('tree.right ran');
-    if ( pathSum(tree.right, target, runningTotal) ) {
-      return true;
-    }
-  }
-  
-  return false;
   
 };
 

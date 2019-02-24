@@ -15,31 +15,22 @@ class Counter {
   }
 
   get(){
-    return this.count
   }
 
   increment( value ) {
-    let sum, current = this.count;
-    value ? (sum = current + value) : sum = ++current;
-    this.count = sum;
   }
 
   decrement( value ) {
-    let sum, current = this.count;
-    value ? (sum = current - value ) : sum = --current;
-    this.count = sum;
   }
 
   double(){
-    this.count *= 2
+    
   }
 
   square(){
-    this.count *= this.count
   }
 
   reset() {
-    this.count = 0
   }
 
 };

@@ -48,24 +48,7 @@
 'use strict';
 
 const equilibrium = (A) => {
-    let result;
-    for ( let i = 0; i < A.length; i++ ) {
-      let left = 0, right = 0;
-      for ( let j = 0; j < A.length; j++ ) {
-        // left
-        if ( j < i ) {
-          left += A[j];
-        }
-        // right 
-        if ( j > i ) {
-          right += A[j];
-        }
-      }
-      if ( left === A[i] && A[i] === right ) {
-        result = A[i];
-      }
-    }
-    return result;
+    
 };
 
 module.exports = { equilibrium };

@@ -14,27 +14,6 @@
 
 const longestRun = ( string ) => {
   
-  let longest = [], 
-      count = 0, longestCount = 0, start = 0, stop,
-      arr = string.split(''),
-      last = arr[0];
-      
-  for ( var i = 1; i <= arr.length; i++ ) {
-    if ( last == arr[i] ){
-      count++;
-      stop = i;
-      if ( count > longestCount ) {
-        longestCount = count;
-        longest = [start,stop];
-      }
-    } else if ( last != arr[i] ) {
-      start = i;
-      count = 0;
-    }
-    last = arr[i];
-  }  
-  
-  return longest;
 };
 
 // If you need a random string generator, use this!

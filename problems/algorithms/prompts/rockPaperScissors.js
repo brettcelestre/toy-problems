@@ -21,31 +21,7 @@
 */
 
 const rockPaperScissors = ( limit ) => {
-  const options = ['rock', 'paper', 'scissors'];
-  let results = [];
   
-  const subRoutine = ( permutation ) => {
-    // Base case, check length of permutation, if equal to limit
-    if ( permutation.length >= limit) {
-      // Push current permutation into results array
-      results.push(permutation.slice()); // add slice
-      // Returns out of recursive call
-      return;
-    }
-    // Iterate over options
-    for ( var i = 0; i < options.length; i++ ) {
-      // Push current option into permutation
-      permutation.push(options[i]);
-      // Invoke subRoutine with current permutation
-      subRoutine(permutation);
-      // Pop permutation after recursive call
-      permutation.pop();
-    }
-  } 
-  // Invoke subRoutine with an empty array
-  subRoutine( [] );
-  return results;
-  // return results;
 };
 
 module.exports = { rockPaperScissors };

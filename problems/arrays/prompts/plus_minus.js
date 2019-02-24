@@ -24,28 +24,7 @@
 */
 
 const plusMinus = (size, arr) => {
-  if ( typeof size === 'number' 
-    && Array.isArray(arr) === true 
-    && size === arr.length ) {
-    let positive = 0,
-        negative = 0,
-        zero = 0;
-    arr.forEach(n =>{
-      if (n > 0) {
-        positive++
-      } else if (n < 0) {
-        negative++
-      } else if ( n == 0 ) {
-        zero++
-      }
-    });
-    let positiveFraction = positive / size,
-        negativeFraction = negative / size,
-        zeroFraction = zero / size;
-    return [Number(positiveFraction.toFixed(7)),Number(negativeFraction.toFixed(7)), Number(zeroFraction.toFixed(7))];
-  } else {
-    return 'Invalid input.'
-  }
+  
 };
 
 module.exports = { plusMinus };

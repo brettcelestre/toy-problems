@@ -22,26 +22,7 @@
  */
 
 const nthFibonacci = (num, memo) => {
-  // memo = memo || {};
-  // if (memo[n]) return memo[n];
-  // if (n <= 1) return 1;
-  // return memo[n] = nthFibonacci(n - 1, memo) + nthFibonacci(n - 2, memo);
-
-  // if (num <= 1) return 1;
-  // return nthFibonacci(num - 1) + nthFibonacci(num - 2);
-
-  // let results = {};
-  // // checks if n has
-  // if ( results[n] ){
-  //   return results[n];
-  // }
-  //
-  // if ( n <= 2 ) {
-  //   return n;
-  // }
-  // let final = nthFibonacci(n - 1) + nthFibonacci(n - 2);
-  //
-  // return final;
+  
 };
 
 module.exports = { nthFibonacci };

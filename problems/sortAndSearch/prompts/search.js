@@ -11,25 +11,11 @@
 
 
 const searchIterative = (nums, k) => {
-  for ( var i = 0; i < nums.length; i++ ) {
-    if ( nums[i] === k ) {
-      return i;
-    }
-  }
-  return -1;
+  
 }
 
 const searchRecursive = (nums, k, i = 0) => {
-  // Base case
-  if ( nums.length === i || i > 10 ) {
-    return -1
-  }
-  // Checks if i in nums equals k
-  if ( nums[i] === k ) {
-    // Returns i
-    return i;
-  }
-  return searchRecursive(nums, k, ++i)
+  
 }
 
 module.exports = { searchIterative, searchRecursive };

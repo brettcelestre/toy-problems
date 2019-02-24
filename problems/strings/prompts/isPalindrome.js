@@ -14,7 +14,6 @@
 
 const isPalindrome = (string) => {
   // TODO: your code here!
-  return string === string.split('').reverse().join('');
 }
 
 module.exports = { isPalindrome }
