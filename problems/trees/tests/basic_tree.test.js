@@ -180,7 +180,7 @@ describe('Trees', function() {
 	    
 	  });
 
-	  xdescribe('depthFirstSearch', function() {
+	  describe('depthFirstSearch', function() {
 
 	    it('should have a method named depthFirstSearch', function(){
 	      expect(tree.depthFirstSearch).to.be.a('function');

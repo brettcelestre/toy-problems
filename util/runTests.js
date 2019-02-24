@@ -1,7 +1,7 @@
 'use strict';
 /**
  * Test runner utility for Preparator.
- * 
+ *
  * Programmatically runs tests (rather than via mocha's CLI).
  * This allows us to hook into Mocha framework events.
  *

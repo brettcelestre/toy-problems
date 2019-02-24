@@ -21,6 +21,6 @@ function testScroll(ev){
     $stickie[0].style.visibility = 'hidden';
   }
 }
-window.onscroll=testScroll
+window.onscroll=testScroll;
 
 // modules.export { testScroll };

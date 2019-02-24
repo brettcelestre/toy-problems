@@ -5,18 +5,23 @@ const solution = require('../prompts/resizingHashTable.js'),
       assert = require('chai').assert;
 
 describe('hashTables', () => {
+  
   describe('makeHashTable', () => {
+    
     it('should exist', () => {
       should.exist(solution.makeHashTable);
     });
+    
     it('should be a function', () => {
       solution.makeHashTable.should.be.a.Function;
     });
+    
     it('should return a hash table', () => {
       const hashTable = solution.makeHashTable();
       should.exist(hashTable);
       hashTable.should.be.an.Object;
     });
+    
     it('should return different instances of hash tables each time', () => {
       const hashTable1 = solution.makeHashTable();
       should.exist(hashTable1);
@@ -31,14 +36,16 @@ describe('hashTables', () => {
 
   describe('hashTable', () => {
     describe('#insert', () => {
+      
       it('should exist as a method of hashtable instances', () => {
         const hashTable = solution.makeHashTable();
         should.exist(hashTable.insert);
       })
+      
       it('should take exactly two arguments. a key and a value', () => {
         const hashTable = solution.makeHashTable();
         hashTable.insert.length.should.equal(2);
-        /**
+        /*
           a hashtable gets its awesomeness from associating data. it wouldn't be
           very useful if you just gave it data without any association.
           ie, bad hash table:
@@ -59,39 +66,45 @@ describe('hashTables', () => {
           hashtable: i know
         */
       });
-  /*    it('should not throw an error with valid input', function(){
+      
+      it('should not throw an error with valid input', function(){
         (function(){
           var hashTable = solution.makeHashTable();
           hashTable.insert('keanu reeves best movie', 'The Matrix');
           // calling insert should not throw an error
         }).should.not.throw();
-      });*/
-      it('should allow keys to be reinserted with new values', () => {
+      });
+      
+      xit('should allow keys to be reinserted with new values', () => {
         const hashTable = solution.makeHashTable();
         (function(){
           hashTable.insert('keanu reeves best movie', 'Bill & Ted\'s Excellent Adventure');
           hashTable.insert('keanu reeves best movie', 'The Matrix');
         }).should.not.throw();
       });
-      /*it('should throw an error if keys are not strings', function(){
+      
+      xit('should throw an error if keys are not strings', function(){
         // not a HUDGE deal but only strings should be keys. regular objects
         // converted to strings are always '[object Object]'
         var hashTable = solution.makeHashTable();
         (function(){
           hashTable.insert({foo:'bar'}, 'oh no!');
         }).should.throw();
-      });*/
+      });
+      
     });
 
-    describe('#retrieve', () => {
+    xdescribe('#retrieve', () => {
       it('should be a method of hashTable instances', () => {
         const hashTable = solution.makeHashTable();
         should.exist(hashTable.retrieve);
       })
+      
       it('should be a function', () => {
         const hashTable = solution.makeHashTable();
         hashTable.retrieve.should.be.a.Function;
       });
+      
       it('should take exactly one argument', () => {
         const hashTable = solution.makeHashTable();
         // the retrieve function should only take a single `key` argument
@@ -110,7 +123,7 @@ describe('hashTables', () => {
       });
     });
 
-    describe('#insert', () =>{
+    xdescribe('#insert', () =>{
       it('should allow valus to be updated', () =>{
         const hashTable = solution.makeHashTable();
         hashTable.insert('Tarantino\'s best movie', 'Jackie Brown');
@@ -121,7 +134,7 @@ describe('hashTables', () => {
       });
     });
 
-    describe('#remove', () =>{
+    xdescribe('#remove', () =>{
       it('should exist as a method of the hashTable instance', () =>{
         const hashTable = solution.makeHashTable();
         should.exist(hashTable.remove);

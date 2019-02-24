@@ -13,7 +13,6 @@ class LinkedList {
     const findValue = (node) => {
       // First checks if the current value is our target val
       if ( node.value === val ) {
-        // Returns true
         return true;
       // Second checks if next property is not null
       } else if ( node.next !== null ) {

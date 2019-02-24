@@ -21,8 +21,8 @@ class Tree {
   }
 
   contains(target) {
-    return (this.value === target) ? true :
-    this.children.some(child => child.contains(target))
+    return (this.value === target) ?
+      true : this.children.some(child => child.contains(target))
   }
   
   countLeaves(){
@@ -59,6 +59,10 @@ class Tree {
         return child.removeFromParent(target);
       }
     }
+  }
+  
+  depthFirstSearch(){
+    
   }
   
 };

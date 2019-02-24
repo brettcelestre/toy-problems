@@ -9,8 +9,9 @@ describe('Stacks', () => {
     let minStack;
     beforeEach(() => {
       minStack = new solution.MinStack();
-      for(let i = 0; i < 999999; i ++){
+      for(let i = 0; i < 11; i ++){
         minStack.push(Math.random());
+        console.log('yo: ', minStack.size());
       }
     });
 

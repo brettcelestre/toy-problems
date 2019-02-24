@@ -31,6 +31,7 @@ var $viewer = document.getElementsByClassName('viewer'),
     $back = document.getElementById('back'),
     current = 0;
 
+// Next Image
 $next.onclick = function next(){
   if ( current <= data.length ){
     current++;
@@ -38,6 +39,7 @@ $next.onclick = function next(){
     $viewer[0]['innerHTML'] = '<img src="' + data[current]['sizes'][currentSize]['src'] + '" width="' + data[current]['sizes'][currentSize]['width'] + '" height="' + data[current]['sizes'][currentSize]['height'] + '"/>';
   }
 }
+// Previous Image
 $back.onclick = function back(){
   if ( current > 0 ){
     current--;
@@ -49,6 +51,9 @@ $back.onclick = function back(){
 // Checks window width & height and updates correct image resolution
 function updateImageSize(){
 
+  // XLARGE / TV
+
+  // LARGE / DESKTOP
   // TODO: Also height
   if ( window.self.innerWidth >= 1100 ) {
     currentSize = 'large';
@@ -56,6 +61,7 @@ function updateImageSize(){
     // Updates Image
     $viewer[0]['innerHTML'] = '<img src="' + data[current]['sizes'][currentSize]['src'] + '" width="' + data[current]['sizes'][currentSize]['width'] + '" height="' + data[current]['sizes'][currentSize]['height'] + '"/>';
 
+  // MEDIUM / TABLET
   // TODO: Also height
   } else if ( 1099 >= window.self.innerWidth && 800 <= window.self.innerWidth) {
     currentSize = 'medium';
@@ -63,6 +69,7 @@ function updateImageSize(){
     // Updates Image
     $viewer[0]['innerHTML'] = '<img src="' + data[current]['sizes'][currentSize]['src'] + '" width="' + data[current]['sizes'][currentSize]['width'] + '" height="' + data[current]['sizes'][currentSize]['height'] + '"/>';
 
+  // SMALL / MOBILE
   // TODO: Also height
   } else if ( 799 >= window.self.innerWidth ) {
     currentSize = 'small';

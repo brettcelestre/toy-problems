@@ -86,6 +86,7 @@ const buildProductCards = data => {
     // Adds product card to product container
     $productContainer[0].appendChild($productCard);
 
+    // Sub runs after all varibles are declared
     const sub = () => {
       let $tooltipEvent = document.getElementById('tooltip' + i),
           $tooltipDivEvent = document.getElementById('tooltipDiv' + i),
@@ -117,6 +118,8 @@ const buildProductCards = data => {
 }
 
 buildProductCards(productData);
+
+
 
 
 /* <div class='product-card'>

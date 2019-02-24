@@ -14,15 +14,59 @@ const makeHashTable = () => {
   let storageLimit = 4;
   let size = 0;
 
-  result.insert = () => {
+  result.insert = (key, value) => {
     // TODO: implement `insert`
+    let previous = undefined;
+    if (result.hasItem(key)) {
+        previous = this.items[key];
+    }
+    else {
+        this.length++;
+    }
+    this.items[key] = value;
+    return previous;
+    
+    // let index = getIndexBelowMaxForKey(key, storageLimit);
+
+    // let bucket = storage.get(index) || [];
+
+    // for (let i = 0; i < bucket.length; i++) {
+    //   let tuple = bucket[i];
+    //   if (tuple[0] === key) {
+    //     let oldValue = tuple[1];
+    //     tuple[1] = value;
+    //     return oldValue;
+    //   }
+    // }
+
+    // bucket = [...bucket, [key, value]];
+    // storage.set(index, bucket);
+    // size++;
+
+    // if (size > storageLimit * 0.75) {
+    //   resize(storageLimit * 2);
+    // }
+
+    // return undefined;
+    
+  };
+  
+  
+  
+  result.hasItem = (key) => {
+    return 
   };
 
   result.retrieve = () => {
     // TODO: implement `retrieve`
+    // Check size, if 1/4 full, resize
   };
 
   result.remove = () => {
+    // TODO: implement `remove`
+  };
+  
+  result.resize = () => {
     // TODO: implement `remove`
   };
 
