@@ -27,6 +27,7 @@
   // './DOM/tests/simon-says/simon-says.tests.js'
 
   // './graphs/tests/graph.test.js',
+  // './graphs/tests/shortestPath.test.js',
 
   // './hashTables/tests/resizingHashTable.test.js',
 
