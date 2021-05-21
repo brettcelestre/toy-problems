@@ -17,8 +17,23 @@
   */
 
 const pathSum = (tree, target, runningTotal = 0) => {
-  
-  
+  runningTotal += tree.value;
+  if ( runningTotal > target) {
+    return false;
+  } else if (tree.left === null && tree.right === null)  {
+    return runningTotal === target ?  true : false;
+  }
+  if (tree.left) {
+    if (pathSum(tree.left, target, runningTotal)) {
+      return true;
+    }
+  }
+  if (tree.right) {
+    if (pathSum(tree.right, target, runningTotal)) {
+      return true;
+    };
+  }
+  return false;
 };
 
 module.exports = { pathSum };

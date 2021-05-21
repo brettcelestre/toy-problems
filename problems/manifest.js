@@ -66,7 +66,7 @@
   // './sortAndSearch/tests/search.test.js',
   // './sortAndSearch/tests/sort.test.js',
 
-  // './trees/tests/basic_tree.test.js',
+  './trees/tests/basic_tree.test.js',
   // './trees/tests/traverse_tree.test.js',
   // './trees/tests/pathSum_basic.test.js'
 
